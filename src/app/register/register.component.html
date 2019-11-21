@@ -1,0 +1,33 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Register</h3>
+        <div class="card-body">
+          <form class="form">
+            <div class="form-group">
+              <label for="">Username</label>
+              <input [(ngModel)]="registerUserData.name" name="name" type="text" [ngClass]="invalidUsername" class="form-control rounded-0">
+              <p *ngIf="invalidUsername !== ''">{{ usernameError }}</p>
+            </div>
+            <div class="form-group">
+              <label for="">Age</label>
+              <input [(ngModel)]="registerUserData.age" name="age" type="number" class="form-control rounded-0">
+            </div>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input [(ngModel)]="registerUserData.email" name="email" type="text" [ngClass]="invalidEmail" class="form-control rounded-0">
+              <p *ngIf="invalidEmail !== ''">{{ emailError }}</p>
+            </div>
+            <div class="form-group">
+              <label for="">Password</label>
+              <input [(ngModel)]="registerUserData.password" name="password" type="password" [ngClass]="invalidPassword" class="form-control rounded-0">
+              <p *ngIf="invalidPassword !== ''">{{ passwordError }}</p>
+            </div>
+            <button (click)="registerUser()" type="button" class="btn btn-primary float-right">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
