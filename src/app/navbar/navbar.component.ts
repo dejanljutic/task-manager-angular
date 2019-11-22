@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,8 @@ export class NavbarComponent implements OnInit {
     this.authService.logoutUser()
       .subscribe(
         res => {
-          console.log(res);
+          localStorage.removeItem('token');
+          this.authService.isLoggedIn = false;
           this.router.navigate(['/login']);
         },
         err => {
@@ -34,6 +35,6 @@ export class NavbarComponent implements OnInit {
   }
 
   userLoggedIn() {
-    return this.authService.loggedIn();
+    return this.authService.isLoggedIn;
   }
 }

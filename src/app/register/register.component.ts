@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -31,7 +31,9 @@ export class RegisterComponent implements OnInit {
     this.auth.registerUser(this.registerUserData)
       .subscribe(
         res => {
+          localStorage.setItem('token', res.token);
           this.auth.loggedUser = res;
+          this.auth.isLoggedIn = true;
           this.router.navigate(['/tasks']);
         },
         err => {

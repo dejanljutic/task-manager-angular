@@ -6,14 +6,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/tasks', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'tasks', component: TasksComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'not-found', component: ErrorPageComponent },
   { path: '**', redirectTo: '/not-found' }
 ];

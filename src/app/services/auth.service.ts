@@ -10,6 +10,7 @@ export class AuthService {
   private logoutUrl = 'https://ljutic-task-manager.herokuapp.com/users/logout';
 
   loggedUser: any;
+  isLoggedIn = false;
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +26,7 @@ export class AuthService {
   logoutUser() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${this.loggedUser.token}`
+        Authorization: `Bearer ${this.getToken()}`
       })
     };
 
@@ -33,11 +34,11 @@ export class AuthService {
   }
 
   loggedIn() {
-    return false || !!this.loggedUser.token;
+    return !!localStorage.getItem('token');
   }
 
   getToken() {
-    return this.loggedUser.token;
+    return localStorage.getItem('token');
   }
 
 }
