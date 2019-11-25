@@ -1,2 +1,23 @@
-
-    <button class="btn btn-primary" (click)="getProfile()">Get profile info</button>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h4>Name:</h4>
+      <p>{{ this.loggedUser.name }}</p>
+    </div>
+    <div class="container">
+        <h4>Age:</h4>
+        <p>{{ this.loggedUser.age }}</p>
+      </div>
+      <div class="container">
+        <h4>Email:</h4>
+        <p>{{ this.loggedUser.email }}</p>
+      </div>
+      <div class="container">
+        <h4>Created at:</h4>
+        <p>{{ this.loggedUser.createdAt }}</p>
+      </div>
+      <div class="container">
+        <h4>Updated at:</h4>
+        <p>{{ this.loggedUser.updatedAt }}</p>
+      </div>
+  </div>
+  

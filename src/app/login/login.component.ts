@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('token', res.token);
-          this.auth.loggedUser = res;
-          this.auth.isLoggedIn = true;
+          localStorage.setItem('user', JSON.stringify(res.user));
           this.router.navigate(['/tasks']);
         },
         err => {

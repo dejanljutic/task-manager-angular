@@ -9,13 +9,9 @@ export class AuthService {
   private loginUrl = 'https://ljutic-task-manager.herokuapp.com/users/login';
   private logoutUrl = 'https://ljutic-task-manager.herokuapp.com/users/logout';
 
-  loggedUser: any;
-  isLoggedIn = false;
-
   constructor(private http: HttpClient) { }
 
   registerUser(user) {
-    this.http.post<any>(this.registerUrl, user).subscribe(res => this.loggedUser = res);
     return this.http.post<any>(this.registerUrl, user);
   }
 
@@ -30,7 +26,7 @@ export class AuthService {
       })
     };
 
-    return this.http.post<any>(this.logoutUrl, this.loggedUser, httpOptions);
+    return this.http.post<any>(this.logoutUrl, localStorage.getItem('user'), httpOptions);
   }
 
   loggedIn() {

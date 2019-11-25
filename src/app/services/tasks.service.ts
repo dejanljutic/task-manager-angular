@@ -11,7 +11,4 @@ export class TasksService {
   constructor(private http: HttpClient,
               private authService: AuthService) { }
 
-  getProfile() {
-    return this.http.get<any>(this.profileUrl, this.authService.loggedUser).subscribe(res => console.log(res));
-  }
 }

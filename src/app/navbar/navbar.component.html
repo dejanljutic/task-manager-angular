@@ -20,7 +20,8 @@
     <ul class="navbar-nav">
       <a class="nav-link" *ngIf="!userLoggedIn()" routerLink="/login" routerLinkActive="active" (click)="toggleNavbar()">Login</a>
       <a class="nav-link" *ngIf="!userLoggedIn()" routerLink="/register" routerLinkActive="active" (click)="toggleNavbar()">Register</a>
-      <a class="nav-link" *ngIf="userLoggedIn()" style="cursor:pointer" (click)="logoutUser()" (click)="toggleNavbar()">Logout</a>
+      <a class="nav-link" style="cursor:pointer" (click)="logoutUser()" (click)="toggleNavbar()">Logout</a>
+      <!-- *ngIf="userLoggedIn()" -->
     </ul>
   </div>
 </nav>

@@ -32,8 +32,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('token', res.token);
-          this.auth.loggedUser = res;
-          this.auth.isLoggedIn = true;
+          localStorage.setItem('user', res.user);
           this.router.navigate(['/tasks']);
         },
         err => {

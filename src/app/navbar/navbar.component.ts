@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.removeItem('token');
-          this.authService.isLoggedIn = false;
+          localStorage.removeItem('user');
           this.router.navigate(['/login']);
         },
         err => {
@@ -35,6 +35,6 @@ export class NavbarComponent implements OnInit {
   }
 
   userLoggedIn() {
-    return this.authService.isLoggedIn;
+    return !!localStorage.getItem('token');
   }
 }
