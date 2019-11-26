@@ -20,13 +20,7 @@ export class AuthService {
   }
 
   logoutUser() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.getToken()}`
-      })
-    };
-
-    return this.http.post<any>(this.logoutUrl, localStorage.getItem('user'), httpOptions);
+    return this.http.post<any>(this.logoutUrl, localStorage.getItem('user'));
   }
 
   loggedIn() {

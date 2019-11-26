@@ -1,23 +1,52 @@
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h4>Name:</h4>
-      <p>{{ this.loggedUser.name }}</p>
-    </div>
-    <div class="container">
-        <h4>Age:</h4>
-        <p>{{ this.loggedUser.age }}</p>
-      </div>
-      <div class="container">
-        <h4>Email:</h4>
-        <p>{{ this.loggedUser.email }}</p>
-      </div>
-      <div class="container">
-        <h4>Created at:</h4>
-        <p>{{ this.loggedUser.createdAt }}</p>
-      </div>
-      <div class="container">
-        <h4>Updated at:</h4>
-        <p>{{ this.loggedUser.updatedAt }}</p>
-      </div>
-  </div>
+<form>
   
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <img src="https://ljutic-task-manager.herokuapp.com/users/5db024e6a4da24001701bde4/avatar" alt="profile picture" width="250px" class="img-thumbnail rounded mx-auto d-block">
+      </div>
+      <div class="col-sm">
+        <br><br><br><br><br><br><br>
+        <label for="inputGroupFile01">Change your profile picture</label>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <button class="btn btn-primary" id="inputGroupFileAddon01" (click)="uploadAvatar()">Upload</button>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" cursor="pointer"
+                  aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="this.loggedUser.name" class="form-control" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" [(ngModel)]="this.loggedUser.age" class="form-control" id="age" name="age">
+      </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" [(ngModel)]="this.loggedUser.email" class="form-control" id="email" name="email">
+      </div>
+      <div>
+        <label for="createdAt">Created at: </label>
+        <p id="createdAt">{{ this.loggedUser.createdAt | date:'dd. MMMM y. HH:mm' }}</p>
+      </div>
+      <div>
+        <label for="updatedAt">Updated at: </label>
+        <p id="updatedAt">{{ this.loggedUser.updatedAt | date:'dd. MMMM y. HH:mm' }}</p>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="updateUser()">Update profile</button>
+      <button type="submit" class="btn btn-danger float-right" (click)="deleteUser()">Delete profile</button>
+  </div>
+  </form>
+</div>
+<!-- property label -> input field -> edit profile -> delete profile -> profile pic -->
