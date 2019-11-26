@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   loggedUser = JSON.parse(localStorage.getItem('user'));
-  avatar;
+  avatar = `https://ljutic-task-manager.herokuapp.com/users/${this.loggedUser._id}/avatar`;
+  newAvatar: File = null;
 
   constructor(private user: UserService,
               private router: Router) { }
@@ -50,17 +51,28 @@ export class ProfileComponent implements OnInit {
       );
   }
 
+  onFileSelected(event) {
+    this.newAvatar = event.target.files[0];
+  }
+
   uploadAvatar() {
-    this.user.uploadAvatar(this.avatar)
+    const fd = new FormData();
+    fd.append('avatar', this.newAvatar, this.newAvatar.name);
+
+    this.user.uploadAvatar(fd)
     .subscribe(
       res => {
-        console.log(res)
+        location.reload();
       },
       err => {
-
+        console.log(err);
       }
     );
       
+  }
+
+  noAvatar() {
+    this.avatar = 'https://www.hoursproject.com/images/cache/square_thumb/images/user/default.png';
   }
  
 }

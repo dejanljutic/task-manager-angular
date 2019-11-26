@@ -4,21 +4,17 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <img src="https://ljutic-task-manager.herokuapp.com/users/5db024e6a4da24001701bde4/avatar" alt="profile picture" width="250px" class="img-thumbnail rounded mx-auto d-block">
+        <img src="{{ this.avatar }}" (error)="noAvatar()" alt="profile picture" width="250px" class="img-thumbnail mx-auto d-block">
       </div>
       <div class="col-sm">
         <br><br><br><br><br><br><br>
-        <label for="inputGroupFile01">Change your profile picture</label>
+        <label for="newAvatar">Change your profile picture</label>
           <div class="input-group">
-              <div class="input-group-prepend">
-                <button class="btn btn-primary" id="inputGroupFileAddon01" (click)="uploadAvatar()">Upload</button>
-              </div>
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" cursor="pointer"
-                  aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-              </div>
-            </div>
+            <div class="custom-file">
+              <input type="file"  id="newAvatar" (change)="onFileSelected($event)">
+              <button class="btn btn-primary" id="btnUploadAvatar" (click)="uploadAvatar()">Upload</button>
+            </div>    
+          </div>
         </div>
     </div>
   </div>

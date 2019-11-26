@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   private userUrl = 'https://ljutic-task-manager.herokuapp.com/users/me';
   private avatarUrl = 'https://ljutic-task-manager.herokuapp.com/users/me/avatar';
-  private userId = JSON.parse(localStorage.getItem('user'))['_id'];
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +19,7 @@ export class UserService {
   }
 
   uploadAvatar(avatar) {
-    //return this.http.post<any>(this.avatarUrl, avatar);
-    return this.userId;
-  }
-
-  getAvatar() {
-    // https://ljutic-task-manager.herokuapp.com/users/5db024e6a4da24001701bde4/avatar
+    return this.http.post<any>(this.avatarUrl, avatar);
   }
 
 }
