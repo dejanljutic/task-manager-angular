@@ -22,4 +22,7 @@ export class UserService {
     return this.http.post<any>(this.avatarUrl, avatar);
   }
 
+  deleteAvatar(user) {
+    return this.http.delete<any>(this.avatarUrl, user)
+  }
 }

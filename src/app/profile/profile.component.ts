@@ -12,6 +12,10 @@ export class ProfileComponent implements OnInit {
   avatar = `https://ljutic-task-manager.herokuapp.com/users/${this.loggedUser._id}/avatar`;
   newAvatar: File = null;
 
+  noAvatar() {
+    this.avatar = 'https://www.sackettwaconia.com/wp-content/uploads/default-profile.png';
+  }
+
   constructor(private user: UserService,
               private router: Router) { }
 
@@ -71,8 +75,17 @@ export class ProfileComponent implements OnInit {
       
   }
 
-  noAvatar() {
-    this.avatar = 'https://www.hoursproject.com/images/cache/square_thumb/images/user/default.png';
+  deleteAvatar() {
+    this.user.deleteAvatar(this.loggedUser)
+      .subscribe(
+        res => {
+          this.noAvatar();
+          //location.reload();
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
- 
+
 }

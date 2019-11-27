@@ -12,7 +12,9 @@
           <div class="input-group">
             <div class="custom-file">
               <input type="file"  id="newAvatar" (change)="onFileSelected($event)">
-              <button class="btn btn-primary" id="btnUploadAvatar" (click)="uploadAvatar()">Upload</button>
+              <button type="submit" class="btn btn-primary" id="btnUploadAvatar" (click)="uploadAvatar()">Upload</button>
+                &nbsp;
+              <button type="submit" class="btn btn-danger float-right" (click)="deleteAvatar()">Delete avatar</button>
             </div>    
           </div>
         </div>
@@ -36,13 +38,12 @@
         <label for="createdAt">Created at: </label>
         <p id="createdAt">{{ this.loggedUser.createdAt | date:'dd. MMMM y. HH:mm' }}</p>
       </div>
-      <div>
+      <!-- <div>
         <label for="updatedAt">Updated at: </label>
         <p id="updatedAt">{{ this.loggedUser.updatedAt | date:'dd. MMMM y. HH:mm' }}</p>
-      </div>
+      </div> -->
       <button type="submit" class="btn btn-primary" (click)="updateUser()">Update profile</button>
       <button type="submit" class="btn btn-danger float-right" (click)="deleteUser()">Delete profile</button>
   </div>
   </form>
 </div>
-<!-- property label -> input field -> edit profile -> delete profile -> profile pic -->
