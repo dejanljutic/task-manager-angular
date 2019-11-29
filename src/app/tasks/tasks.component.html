@@ -1,5 +1,15 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+<div class="container mb-5 mt-4">
+  <app-add-task (newTask)="getTasks()"></app-add-task>
+</div>
+<div class="input-group mb-3" *ngFor="let task of tasks">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="checkbox" [checked]="task.completed" (change)="toggleCompleted(task)">
+    </div>
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="task.description" [style.text-decoration]="task.completed ? 'line-through' : ' '">
+  <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="button" (click)="changeDescription(task)">Update</button>
+    <button class="btn btn-outline-secondary" type="button" (click)="deleteTask(task)">Delete</button>
   </div>
 </div>

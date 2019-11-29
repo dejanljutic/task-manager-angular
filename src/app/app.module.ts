@@ -15,6 +15,7 @@ import { AuthService } from './services/auth.service';
 import { TasksService } from './services/tasks.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     ProfileComponent,
     NavbarComponent,
     ErrorPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,

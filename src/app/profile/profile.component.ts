@@ -80,7 +80,6 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         res => {
           this.noAvatar();
-          //location.reload();
         },
         err => {
           console.log(err);
